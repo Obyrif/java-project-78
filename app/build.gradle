@@ -8,6 +8,10 @@ plugins {
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
 
+application {
+    mainClassName = 'hexlet.code.app'
+}
+
 repositories {
     mavenCentral()
 }
