@@ -9,10 +9,12 @@ public class StringSchema {
         isRequired = true;
         return this;
     }
+
     public StringSchema minLength(int minLength) {
         minLengthMethod = minLength;
         return this;
     }
+
     public StringSchema contains(String s) {
         containsMethod = s;
         return this;
