@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public class StringSchema {
+public abstract class StringSchema extends BaseSchema{
     private boolean isRequired = false;
     private int minLengthMethod = 0;
     private String containsMethod = "";
