@@ -35,7 +35,7 @@ public class StringSchemaTest {
         assertFalse(numberSchema.isValid("5"));
         assertTrue(numberSchema.isValid(10));
         assertFalse(numberSchema.isValid(-10));
-        numberSchema.range(5,10);
+        numberSchema.range(5, 10);
         assertTrue(numberSchema.isValid(5));
     }
 
@@ -49,13 +49,13 @@ public class StringSchemaTest {
 
     @Test
     public void testValidation() {
-               schema.minLength(6);
+        schema.minLength(6);
         assertTrue(schema.isValid("suggestion"));
     }
 
     @Test
     public void testCombinedValidations() {
-          schema.required()
+        schema.required()
                 .minLength(5)
                 .contains("hex");
 
