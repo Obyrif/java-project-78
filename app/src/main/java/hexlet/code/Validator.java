@@ -13,11 +13,20 @@ public class Validator {
             return false;
         }
     };
+    MapSchema mapSchema = new MapSchema() {
+        @Override
+        public boolean isValid() {
+            return false;
+        }
+    };
 
     public StringSchema string() {
         return schema;
     }
     public NumberSchema number() {
         return numberSchema;
+    }
+    public MapSchema map() {
+        return mapSchema;
     }
 }
