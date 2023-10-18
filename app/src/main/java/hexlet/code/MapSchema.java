@@ -47,4 +47,3 @@ public abstract class MapSchema extends BaseSchema {
         return true;
     }
 }
-
