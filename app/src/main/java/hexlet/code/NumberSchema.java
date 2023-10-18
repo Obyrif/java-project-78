@@ -1,10 +1,10 @@
 package hexlet.code;
 
 public abstract class NumberSchema extends BaseSchema {
-    private boolean isRequired = false;
-    private boolean positiveValue = false;
-    private int rangeMin = 0;
-    private int rangeMax = 0;
+    private boolean isRequired;
+    private boolean positiveValue;
+    private int rangeMin;
+    private int rangeMax;
 
     public NumberSchema required() {
         isRequired = true;

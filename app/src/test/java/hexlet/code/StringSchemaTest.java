@@ -3,12 +3,16 @@ package hexlet.code;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringSchemaTest {
     private StringSchema schema;
     private NumberSchema numberSchema;
+    private MapSchema mapSchema;
 
     @BeforeEach
     public void beforeEach() {
@@ -24,8 +28,20 @@ public class StringSchemaTest {
                 return false;
             }
         };
+        mapSchema = new MapSchema() {
+            @Override
+            public boolean isValid() {
+                return false;
+            }
+        };
     }
 
+    @Test
+    public void testMap() {
+        assertTrue(mapSchema.isValid((Map<String, String>) null));
+        mapSchema.required();
+        assertFalse(mapSchema.isValid((Map<String, String>) null));
+    }
     @Test
     public void testValidationNumber() {
         assertTrue(numberSchema.positive().isValid(null));
