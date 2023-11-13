@@ -15,6 +15,11 @@ public class Validator {
     };
     MapSchema mapSchema = new MapSchema() {
         @Override
+        public boolean isValid(Object value) {
+            return false;
+        }
+
+        @Override
         public boolean isValid() {
             return false;
         }

@@ -30,6 +30,11 @@ public class StringSchemaTest {
         };
         mapSchema = new MapSchema() {
             @Override
+            public boolean isValid(Object value) {
+                return false;
+            }
+
+            @Override
             public boolean isValid() {
                 return false;
             }
@@ -38,9 +43,9 @@ public class StringSchemaTest {
 
     @Test
     public void testMap() {
-        assertTrue(mapSchema.isValid((Map<String, String>) null));
+        assertTrue(mapSchema.isValid( null));
         mapSchema.required();
-        assertFalse(mapSchema.isValid((Map<String, String>) null));
+        assertFalse(mapSchema.isValid( null));
     }
     @Test
     public void testValidationNumber() {

@@ -1,7 +1,6 @@
 package hexlet.code;
 
 public abstract class NumberSchema extends BaseSchema {
-    private boolean isRequired;
     private boolean positiveValue;
     private int rangeMin;
     private int rangeMax;
@@ -45,4 +44,6 @@ public abstract class NumberSchema extends BaseSchema {
         }
         return true;
     }
+
+    public abstract boolean isValid();
 }
