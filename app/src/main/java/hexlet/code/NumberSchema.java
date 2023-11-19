@@ -44,6 +44,4 @@ public abstract class NumberSchema extends BaseSchema {
         }
         return true;
     }
-
-    public abstract boolean isValid();
 }

@@ -36,6 +36,4 @@ public abstract class StringSchema extends BaseSchema {
             return false;
         }
     }
-
-    public abstract boolean isValid();
 }

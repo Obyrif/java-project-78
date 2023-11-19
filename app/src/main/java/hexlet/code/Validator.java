@@ -3,13 +3,13 @@ package hexlet.code;
 public class Validator {
     StringSchema schema = new StringSchema() {
         @Override
-        public boolean isValid() {
+        public boolean isValid(Object value) {
             return false;
         }
     };
     NumberSchema numberSchema = new NumberSchema() {
         @Override
-        public boolean isValid() {
+        public boolean isValid(Object value) {
             return false;
         }
     };
@@ -19,10 +19,6 @@ public class Validator {
             return false;
         }
 
-        @Override
-        public boolean isValid() {
-            return false;
-        }
     };
 
     public StringSchema string() {

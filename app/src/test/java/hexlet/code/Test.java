@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +8,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StringSchemaTest {
+public class Test {
     private StringSchema schema;
     private NumberSchema numberSchema;
     private MapSchema mapSchema;
@@ -18,13 +17,13 @@ public class StringSchemaTest {
     public void beforeEach() {
         schema = new StringSchema() {
             @Override
-            public boolean isValid() {
+            public boolean isValid(Object value) {
                 return false;
             }
         };
         numberSchema = new NumberSchema() {
             @Override
-            public boolean isValid() {
+            public boolean isValid(Object value) {
                 return false;
             }
         };
@@ -33,21 +32,20 @@ public class StringSchemaTest {
             public boolean isValid(Object value) {
                 return false;
             }
-
-            @Override
-            public boolean isValid() {
-                return false;
-            }
         };
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testMap() {
         assertTrue(mapSchema.isValid( null));
         mapSchema.required();
         assertFalse(mapSchema.isValid( null));
+        assertFalse(schema.isValid(new HashMap()));
+        Map<String, String> data = new HashMap<>();
+        data.put("key1", "value1");
+        assertFalse(schema.isValid(data));
     }
-    @Test
+    @org.junit.jupiter.api.Test
     public void testValidationNumber() {
         assertTrue(numberSchema.positive().isValid(null));
         assertTrue(numberSchema.isValid(null));
@@ -60,7 +58,7 @@ public class StringSchemaTest {
         assertTrue(numberSchema.isValid(5));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testValidations() {
         assertTrue(schema.isValid(""));
         schema.required()
@@ -68,13 +66,13 @@ public class StringSchemaTest {
         assertTrue(schema.isValid("suggestion"));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testValidation() {
         schema.minLength(6);
         assertTrue(schema.isValid("suggestion"));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testCombinedValidations() {
         schema.required()
                 .minLength(5)

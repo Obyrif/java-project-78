@@ -3,19 +3,11 @@ package hexlet.code;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class MapSchema extends BaseSchema {
-    private boolean isShape;
+public class MapSchema extends BaseSchema {
     private int expectedSize;
-    private Map<String, BaseSchema> schemas = new HashMap<>();
 
     public MapSchema required() {
         isRequired = true;
-        return this;
-    }
-
-    public MapSchema shape(Map<String, BaseSchema> schemas) {
-        this.schemas.putAll(schemas);
-        isShape = true;
         return this;
     }
 
@@ -24,37 +16,22 @@ public abstract class MapSchema extends BaseSchema {
         return this;
     }
 
-    public boolean isValid(Map<String, Object> data) {
-        if (data == null) {
-            return !isRequired;
-        }
+    @Override
+    public boolean isValid(Object value) {
+        Map<String, Object> map = (Map<String, Object>) value;
 
-        for (Map.Entry<String, Object> entry : data.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
+        for (Map.Entry<String, Object> map1: map.entrySet()) {
+            Object value1 = map1.getValue();
 
-            if (isRequired && value == null) {
+            if (isRequired && value1 == null) {
                 return false;
             }
-
-            if (schemas.containsKey(key)) {
-                BaseSchema schema = schemas.get(key);
-                if (schema != null && !schema.isValid(value)) {
-                    return false;
-                }
-            }
         }
 
-        if (expectedSize >= 0 && data.size() != expectedSize) {
+        if (expectedSize >= 0 && map.size() != expectedSize) {
             return false;
-        }
-
-        if (isShape) {
-            return data.keySet().containsAll(schemas.keySet());
         }
 
         return true;
     }
-
-    public abstract boolean isValid();
 }
