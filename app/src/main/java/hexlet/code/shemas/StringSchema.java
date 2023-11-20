@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.shemas;
 
 public class StringSchema extends BaseSchema {
     private int minLengthMethod;

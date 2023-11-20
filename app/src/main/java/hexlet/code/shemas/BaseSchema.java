@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.shemas;
 
 public class BaseSchema {
     public boolean isRequired;

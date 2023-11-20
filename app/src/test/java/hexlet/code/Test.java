@@ -1,5 +1,8 @@
 package hexlet.code;
 
+import hexlet.code.shemas.MapSchema;
+import hexlet.code.shemas.NumberSchema;
+import hexlet.code.shemas.StringSchema;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.util.HashMap;
