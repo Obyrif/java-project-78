@@ -1,13 +1,12 @@
 package hexlet.code;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class MapSchema extends BaseSchema {
     private int expectedSize;
 
     public MapSchema required() {
-        isRequired = true;
+        super.isRequired = true;
         return this;
     }
 
@@ -18,6 +17,11 @@ public class MapSchema extends BaseSchema {
 
     @Override
     public boolean isValid(Object value) {
+
+        if (value == null) {
+            return !isRequired;
+        }
+
         Map<String, Object> map = (Map<String, Object>) value;
 
         for (Map.Entry<String, Object> map1: map.entrySet()) {

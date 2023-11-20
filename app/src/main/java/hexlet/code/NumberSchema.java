@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public abstract class NumberSchema extends BaseSchema {
+public class NumberSchema extends BaseSchema {
     private boolean positiveValue;
     private int rangeMin;
     private int rangeMax;
@@ -22,26 +22,29 @@ public abstract class NumberSchema extends BaseSchema {
     }
 
     public boolean isValid(Object value) {
+
         if (value == null) {
             return !isRequired;
         }
 
         if (value instanceof Integer) {
             int intValue = (Integer) value;
+
             if (isRequired && intValue == 0) {
                 return false;
             }
+
             if (positiveValue && intValue < 0) {
                 return false;
             }
-            if (rangeMin != 0 && rangeMax != 0 && (intValue < rangeMin || intValue > rangeMax)) {
+
+            if ((rangeMin != 0 || rangeMax != 0) && (intValue < rangeMin || intValue > rangeMax)) {
                 return false;
             }
-        }
-
-        if (value instanceof String) {
+        } else if (value instanceof String) {
             return false;
         }
+
         return true;
     }
 }
