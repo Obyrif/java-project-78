@@ -23,9 +23,9 @@ public class Test {
 
     @org.junit.jupiter.api.Test
     public void testMap() {
-        assertTrue(mapSchema.isValid( null));
+        assertTrue(mapSchema.isValid(null));
         mapSchema.required();
-        assertFalse(mapSchema.isValid( null));
+        assertFalse(mapSchema.isValid(null));
         assertTrue(mapSchema.isValid(new HashMap()));
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
