@@ -6,7 +6,7 @@ public class MapSchema extends BaseSchema {
     private int expectedSize;
 
     public MapSchema required() {
-        super.isRequired = true;
+        isRequired = true;
         return this;
     }
 
@@ -35,7 +35,6 @@ public class MapSchema extends BaseSchema {
         if (expectedSize >= 0 && map.size() != expectedSize) {
             return false;
         }
-
         return true;
     }
 }
