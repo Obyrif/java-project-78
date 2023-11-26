@@ -10,17 +10,17 @@ public abstract class BaseSchema {
     }
 
     /**
-     * Проверяет, соответствует ли переданное значение условиям схемы.
-     * @param value Значение для проверки.
-     * @return true, если значение соответствует условиям схемы, иначе false.
+     * Checks if the given value satisfies the schema conditions.
+     * @param value The value to check.
+     * @return true if the value satisfies the schema conditions, otherwise false.
      */
     public boolean isValid(Object value) {
         return predicate.test(value);
     }
 
     /**
-     * Устанавливает обязательное условие для значения схемы.
-     * @return текущий объект схемы для цепочечных вызовов.
+     * Sets a required condition for the schema value.
+     * @return The current schema object for chaining calls.
      */
     public BaseSchema required() {
         this.predicate = this.predicate.and(value -> value != null);
@@ -28,11 +28,12 @@ public abstract class BaseSchema {
     }
 
     /**
-     * Добавляет условие для проверки значения схемы.
-     * @param condition Условие для добавления.
-     * @return текущий объект схемы для цепочечных вызовов.
+     * Adds a condition for checking the schema value.
+     * @param condition The condition to add.
+     * @return The current schema object for chaining calls.
      */
-    protected void addCondition(Predicate<Object> condition) {
+    protected BaseSchema addCondition(Predicate<Object> condition) {
         predicate = predicate.and(condition);
+        return this;
     }
 }
