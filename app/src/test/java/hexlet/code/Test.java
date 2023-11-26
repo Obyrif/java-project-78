@@ -13,15 +13,15 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Test class for validating different schema types.
- */
 public class Test {
     private Validator v = new Validator();
     private StringSchema schema;
     private NumberSchema numberSchema;
     private MapSchema mapSchema;
 
+    /**
+     * Set up method to initialize schema instances before each test.
+     */
     @BeforeEach
     public void beforeEach() {
         schema = v.string();
@@ -29,9 +29,6 @@ public class Test {
         mapSchema = v.map();
     }
 
-    /**
-     * Test for validating a map with multiple schemas.
-     */
     @org.junit.jupiter.api.Test
     public void testMapTwo() {
         Map<String, BaseSchema> schemas = new HashMap<>();
@@ -48,9 +45,6 @@ public class Test {
         assertTrue(mapSchema.isValid(human2));
     }
 
-    /**
-     * Test for validating a map with various conditions.
-     */
     @org.junit.jupiter.api.Test
     public void testMap() {
         assertTrue(mapSchema.isValid(null));
@@ -66,9 +60,6 @@ public class Test {
         assertTrue(mapSchema.isValid(data));
     }
 
-    /**
-     * Test for validating number schema with positive and range conditions.
-     */
     @org.junit.jupiter.api.Test
     public void testNumber() {
         assertTrue(numberSchema.isValid(null));
@@ -86,9 +77,6 @@ public class Test {
         assertFalse(numberSchema.isValid(11));
     }
 
-    /**
-     * Test for validating string schema with required and contains conditions.
-     */
     @org.junit.jupiter.api.Test
     public void testString() {
         assertTrue(schema.isValid(""));
