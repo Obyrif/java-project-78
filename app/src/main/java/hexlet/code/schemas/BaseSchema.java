@@ -19,11 +19,22 @@ public abstract class BaseSchema {
         return predicate.test(value);
     }
 
+    /**
+     * Проверяет, удовлетворяет ли переданное значение обязательному условию схемы.
+     *
+     * @return true, если значение удовлетворяет обязательному условию, иначе false.
+     */
     public BaseSchema required() {
         this.predicate = this.predicate.and(value -> value != null);
         return this;
     }
 
+    /**
+     * Добавляет условие для проверки значения схемы.
+     *
+     * @param condition Условие для добавления.
+     * @return текущий объект схемы для цепочечных вызовов.
+     */
     protected void addCondition(Predicate<Object> condition) {
         predicate = predicate.and(condition);
     }
