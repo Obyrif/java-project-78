@@ -13,6 +13,9 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test class for validating different schema types.
+ */
 public class Test {
     private Validator v = new Validator();
     private StringSchema schema;
