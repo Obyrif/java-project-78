@@ -1,48 +1,28 @@
 package hexlet.code.schemas;
 
 public class StringSchema extends BaseSchema {
-    private int minLengthMethod;
-    private String containsMethod = "";
+    private boolean isRequired;
+    private int minLengthField;
+    private String containsField;
 
     public StringSchema required() {
-        isRequired = true;
+        this.isRequired = true;
+        this.predicate = value ->
+                value instanceof String && (!((String) value).isEmpty());
         return this;
     }
 
     public StringSchema minLength(int minLength) {
-        minLengthMethod = minLength;
+        this.minLengthField = minLength;
+        this.predicate = this.predicate.and(value ->
+                value instanceof String && ((String) value).length() >= minLengthField);
         return this;
     }
 
-    public StringSchema contains(String s) {
-        containsMethod = s;
+    public StringSchema contains(String contains) {
+        this.containsField = contains;
+        this.predicate = this.predicate.and(value ->
+                value instanceof String && ((String) value).contains(containsField));
         return this;
-    }
-
-    public boolean isValid(Object data) {
-
-        if (data == null) {
-            return !isRequired;
-        }
-
-        if (data instanceof String) {
-            String strData = (String) data;
-
-            if (isRequired && (strData == null || strData.isEmpty())) {
-                return false;
-            }
-
-            if (minLengthMethod > 0 && (strData == null || strData.length() < minLengthMethod)) {
-                return false;
-            }
-
-            if (!containsMethod.isEmpty() && (strData == null || !strData.contains(containsMethod))) {
-                return false;
-            }
-
-            return true;
-        } else {
-            return false;
-        }
     }
 }
