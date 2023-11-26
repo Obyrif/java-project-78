@@ -16,4 +16,3 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
 }
-

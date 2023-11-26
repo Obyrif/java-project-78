@@ -9,6 +9,12 @@ public abstract class BaseSchema {
         this.predicate = value -> true;
     }
 
+    /**
+     * Проверяет, соответствует ли переданное значение условиям схемы.
+     *
+     * @param value Значение для проверки.
+     * @return true, если значение соответствует условиям схемы, иначе false.
+     */
     public boolean isValid(Object value) {
         return predicate.test(value);
     }
