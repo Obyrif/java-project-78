@@ -17,6 +17,10 @@ public final class MapSchema extends BaseSchema {
     }
 
     public MapSchema shape(Map<String, BaseSchema> map) {
+        if (map == null) {
+            throw new IllegalArgumentException("Map cannot be null");
+        }
+
         map.forEach((key, value) -> addCondition(o -> {
             if (o instanceof Map) {
                 Map<?, ?> actualMap = (Map<?, ?>) o;

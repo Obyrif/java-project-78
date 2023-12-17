@@ -2,27 +2,26 @@ package hexlet.code.schemas;
 
 public class NumberSchema extends BaseSchema {
     /**
-     * Устанавливает условие, что число должно быть положительным.
-     * @return Текущий объект NumberSchema для цепочечных вызовов.
+     * Sets the condition that the number must be positive.
+     * @return The current NumberSchema object for method chaining.
      */
     public NumberSchema positive() {
-        this.predicate = value ->
-                value == null || (value instanceof Number && ((Number) value).intValue() > 0);
+        addCondition(value ->
+                value == null || (value instanceof Number && ((Number) value).intValue() > 0));
         return this;
     }
 
     /**
-     * Устанавливает диапазон, в пределах которого должно находиться число.
-     * @param min Минимальное значение.
-     * @param max Максимальное значение.
-     * @return Текущий объект NumberSchema для цепочечных вызовов.
+     * Sets the range within which the number must fall.
+     * @param min The minimum value.
+     * @param max The maximum value.
+     * @return The current NumberSchema object for method chaining.
      */
     public NumberSchema range(int min, int max) {
-        this.predicate = this.predicate.and(value ->
+        addCondition(value ->
                 value == null || (value instanceof Number
                                   && ((Number) value).intValue() >= min
-                                  && ((Number) value).intValue() <= max)
-        );
+                                  && ((Number) value).intValue() <= max));
         return this;
     }
 }
