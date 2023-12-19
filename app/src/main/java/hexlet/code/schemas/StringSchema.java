@@ -7,9 +7,7 @@ public class StringSchema extends BaseSchema {
      * @return The current StringSchema object for method chaining.
      */
     public StringSchema required() {
-        super.required();
-        addCondition(value ->
-                value instanceof String && !((String) value).isEmpty());
+        addCondition(value -> value instanceof String && !((String) value).isEmpty());
         return this;
     }
 
@@ -37,3 +35,4 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 }
+

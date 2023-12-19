@@ -1,8 +1,20 @@
 package hexlet.code.schemas;
 
 public class NumberSchema extends BaseSchema {
+
+    /**
+     * Marks the number as required, i.e., it should not be null.
+     *
+     * @return The current NumberSchema object for method chaining.
+     */
+    public NumberSchema required() {
+        addCondition(value -> value != null);
+        return this;
+    }
+
     /**
      * Sets the condition that the number must be positive.
+     *
      * @return The current NumberSchema object for method chaining.
      */
     public NumberSchema positive() {
@@ -13,6 +25,7 @@ public class NumberSchema extends BaseSchema {
 
     /**
      * Sets the range within which the number must fall.
+     *
      * @param min The minimum value.
      * @param max The maximum value.
      * @return The current NumberSchema object for method chaining.

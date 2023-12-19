@@ -4,9 +4,9 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 public final class MapSchema extends BaseSchema {
+
     public MapSchema required() {
-        Predicate<Object> requiredCondition = x -> x instanceof Map;
-        addCondition(requiredCondition);
+        addCondition(value -> value instanceof Map);
         return this;
     }
 
