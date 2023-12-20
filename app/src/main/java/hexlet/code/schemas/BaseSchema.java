@@ -22,6 +22,11 @@ public abstract class BaseSchema {
         return predicates.stream().allMatch(predicate -> predicate.test(value));
     }
 
+    /**
+     * Adds a condition for checking the schema value.
+     *
+     * @param condition The condition to add.
+     */
     protected void addCondition(Predicate<Object> condition) {
         if (predicates == null) {
             predicates = new ArrayList<>();
