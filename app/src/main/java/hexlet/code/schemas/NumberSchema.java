@@ -22,8 +22,7 @@ public class NumberSchema extends BaseSchema {
      * @return The current NumberSchema object for method chaining.
      */
     public NumberSchema positive() {
-        addCondition(value ->
-                value == null || (value instanceof Number && ((Number) value).intValue() > 0));
+        addCondition(value -> value instanceof Number && ((Number) value).intValue() > 0);
         return this;
     }
 
@@ -36,9 +35,7 @@ public class NumberSchema extends BaseSchema {
      */
     public NumberSchema range(int min, int max) {
         addCondition(value ->
-                value == null || (value instanceof Number
-                                  && ((Number) value).intValue() >= min
-                                  && ((Number) value).intValue() <= max));
+                value instanceof Number && ((Number) value).intValue() >= min && ((Number) value).intValue() <= max);
         return this;
     }
 }
