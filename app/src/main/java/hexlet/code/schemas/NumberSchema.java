@@ -8,6 +8,7 @@ public class NumberSchema extends BaseSchema {
      * @return The current NumberSchema object for method chaining.
      */
     public NumberSchema required() {
+        required = true;
         addCondition(value -> value != null);
         return this;
     }

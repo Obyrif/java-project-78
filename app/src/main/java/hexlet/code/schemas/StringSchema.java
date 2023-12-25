@@ -1,12 +1,14 @@
 package hexlet.code.schemas;
 
 public class StringSchema extends BaseSchema {
+
     /**
      * Marks the string as required, i.e., it should not be empty or null.
      *
      * @return The current StringSchema object for method chaining.
      */
     public StringSchema required() {
+        required = true;
         addCondition(value -> value instanceof String && !((String) value).isEmpty());
         return this;
     }

@@ -7,6 +7,7 @@ import java.util.List;
 
 public abstract class BaseSchema {
     protected List<Predicate<Object>> predicates;
+    protected boolean required;
 
     public BaseSchema() {
         this.predicates = new ArrayList<>();
@@ -19,6 +20,9 @@ public abstract class BaseSchema {
      * @return true if the value satisfies the schema conditions, otherwise false.
      */
     public boolean isValid(Object value) {
+        if (!required) {
+            return true;
+        }
         return predicates.stream().allMatch(predicate -> predicate.test(value));
     }
 
