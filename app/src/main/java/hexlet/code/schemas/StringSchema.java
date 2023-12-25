@@ -2,6 +2,10 @@ package hexlet.code.schemas;
 
 public class StringSchema extends BaseSchema {
 
+    public StringSchema() {
+        addCondition(value -> value instanceof String && !((String) value).isEmpty());
+    }
+
     /**
      * Marks the string as required, i.e., it should not be empty or null.
      *
@@ -9,7 +13,6 @@ public class StringSchema extends BaseSchema {
      */
     public StringSchema required() {
         required = true;
-        addCondition(value -> value instanceof String && !((String) value).isEmpty());
         return this;
     }
 

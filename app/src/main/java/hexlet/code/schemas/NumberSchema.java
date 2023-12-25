@@ -2,6 +2,10 @@ package hexlet.code.schemas;
 
 public class NumberSchema extends BaseSchema {
 
+    public NumberSchema() {
+        addCondition(value -> value != null);
+    }
+
     /**
      * Marks the number as required, i.e., it should not be null.
      *
@@ -9,7 +13,6 @@ public class NumberSchema extends BaseSchema {
      */
     public NumberSchema required() {
         required = true;
-        addCondition(value -> value != null);
         return this;
     }
 

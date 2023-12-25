@@ -5,9 +5,12 @@ import java.util.function.Predicate;
 
 public final class MapSchema extends BaseSchema {
 
+    public MapSchema() {
+        addCondition(value -> value instanceof Map);
+    }
+
     public MapSchema required() {
         required = true;
-        addCondition(value -> value instanceof Map);
         return this;
     }
 
