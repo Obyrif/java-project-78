@@ -20,10 +20,10 @@ public abstract class BaseSchema {
      * @return true if the value satisfies the schema conditions, otherwise false.
      */
     public boolean isValid(Object value) {
-        if (required) {
-            return value != null && predicates.stream().allMatch(predicate -> predicate.test(value));
+        if (!required && !predicates.get(0).test(value)) {
+            return true;
         }
-        return true;
+        return predicates.stream().allMatch(predicate -> predicate.test(value));
     }
 
     /**
