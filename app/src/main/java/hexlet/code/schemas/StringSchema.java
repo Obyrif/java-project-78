@@ -40,4 +40,3 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 }
-
