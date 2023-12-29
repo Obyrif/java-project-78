@@ -5,7 +5,7 @@ import java.util.Objects;
 public class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
-        addCondition(Objects::nonNull);
+        addCondition(obj -> Objects.nonNull(obj) && obj instanceof Number);
     }
 
     /**
@@ -24,7 +24,7 @@ public class NumberSchema extends BaseSchema {
      * @return The current NumberSchema object for method chaining.
      */
     public NumberSchema positive() {
-        addCondition(value -> value instanceof Number && ((Number) value).intValue() > 0);
+        addCondition(value -> ((Number) value).intValue() > 0);
         return this;
     }
 
