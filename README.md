@@ -39,7 +39,6 @@ Validator v = new Validator();
 
 NumberSchema schema = v.number();
 
-// Пока не вызван метод required(), null считается валидным
 schema.isValid(null); // true
 schema.positive().isValid(null); // true
 
