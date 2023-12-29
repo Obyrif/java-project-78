@@ -15,7 +15,7 @@ public final class MapSchema extends BaseSchema {
     }
 
     public MapSchema sizeof(int number) {
-        Predicate<Object> sizeCondition = x -> x instanceof Map && ((Map<?, ?>) x).size() == number;
+        Predicate<Object> sizeCondition = x -> ((Map<?, ?>) x).size() == number;
         addCondition(sizeCondition);
         return this;
     }
@@ -26,8 +26,7 @@ public final class MapSchema extends BaseSchema {
         }
 
         map.forEach((key, value) -> addCondition(o -> {
-            if (o instanceof Map) {
-                Map<?, ?> actualMap = (Map<?, ?>) o;
+            if (o instanceof Map<?, ?> actualMap) {
                 return actualMap.containsKey(key) && value.isValid(actualMap.get(key));
             }
             return false;

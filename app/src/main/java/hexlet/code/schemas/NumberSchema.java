@@ -1,9 +1,11 @@
 package hexlet.code.schemas;
 
+import java.util.Objects;
+
 public class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
-        addCondition(value -> value != null);
+        addCondition(Objects::nonNull);
     }
 
     /**
@@ -34,8 +36,7 @@ public class NumberSchema extends BaseSchema {
      * @return The current NumberSchema object for method chaining.
      */
     public NumberSchema range(int min, int max) {
-        addCondition(value ->
-                value instanceof Number && ((Number) value).intValue() >= min && ((Number) value).intValue() <= max);
+        addCondition(value -> ((Number) value).intValue() >= min && ((Number) value).intValue() <= max);
         return this;
     }
 }

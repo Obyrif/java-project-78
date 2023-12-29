@@ -4,32 +4,19 @@ import hexlet.code.schemas.BaseSchema;
 import hexlet.code.schemas.StringSchema;
 import hexlet.code.schemas.NumberSchema;
 import hexlet.code.schemas.MapSchema;
-
-import org.junit.jupiter.api.BeforeEach;
-
+import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class Test {
-    private Validator v = new Validator();
-    private StringSchema schema;
-    private NumberSchema numberSchema;
-    private MapSchema mapSchema;
+public class TestClass {
+    private final Validator v = new Validator();
+    private final StringSchema schema = v.string();
+    private final NumberSchema numberSchema = v.number();
+    private final MapSchema mapSchema = v.map();
 
-    /**
-     * Set up method to initialize schema instances before each test.
-     */
-    @BeforeEach
-    public void beforeEach() {
-        schema = v.string();
-        numberSchema = v.number();
-        mapSchema = v.map();
-    }
-
-    @org.junit.jupiter.api.Test
+    @Test
     public void testMapTwo() {
         Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("name", v.string().required());
@@ -45,7 +32,7 @@ public class Test {
         assertTrue(mapSchema.isValid(human2));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testMap() {
         assertTrue(mapSchema.isValid(null));
         mapSchema.required();
@@ -60,7 +47,7 @@ public class Test {
         assertTrue(mapSchema.isValid(data));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testNumber() {
         assertTrue(numberSchema.isValid(null));
         assertTrue(numberSchema.positive().isValid(null));
@@ -77,7 +64,7 @@ public class Test {
         assertFalse(numberSchema.isValid(11));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testString() {
         assertTrue(schema.isValid(""));
         assertTrue(schema.isValid(null));

@@ -23,8 +23,7 @@ public class StringSchema extends BaseSchema {
      * @return The current StringSchema object for method chaining.
      */
     public StringSchema minLength(int minLength) {
-        addCondition(value ->
-                value instanceof String && ((String) value).length() >= minLength);
+        addCondition(value -> ((String) value).length() >= minLength);
         return this;
     }
 
@@ -35,8 +34,7 @@ public class StringSchema extends BaseSchema {
      * @return The current StringSchema object for method chaining.
      */
     public StringSchema contains(String contains) {
-        addCondition(value ->
-                value instanceof String && ((String) value).contains(contains));
+        addCondition(value -> ((String) value).contains(contains));
         return this;
     }
 }
