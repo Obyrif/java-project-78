@@ -30,7 +30,6 @@ schema.contains("what").isValid("what does the fox say"); // true
 schema.contains("whatthe").isValid("what does the fox say"); // false
 
 schema.isValid("what does the fox say"); // false
-// Здесь уже false, так как добавлена еще одна проверка contains("whatthe")
 </pre>
 
 ### Валидация чисел
